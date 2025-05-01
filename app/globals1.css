@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ffffff;
+  --font-sanss: 'Source Sans 3', sans-serif;
+  --font-syne: 'Syne', sans-serif;
 }
 
 @theme inline {
@@ -23,4 +26,37 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+.bg{
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 24 / var(--tw-bg-opacity, 1));
+}
+.background-lighteffect-svg {
+  height: 100%;
+  width: 80%;
+  z-index: -99;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  position: fixed;
+  left: 50%;
+  top: calc(50% + var(--header-height));
+  transform: translate(-50%, -50%);
+  background: linear-gradient(180deg, rgba(66, 40, 102, .6) -15.9%, rgba(30, 31, 72, .355) 40.82%, rgba(52, 19, 121, 0) 122.75%);
+  filter: blur(128px);
+}
+
+.card {
+  backdrop-filter: blur(0px) saturate(200%);
+  -webkit-backdrop-filter: blur(0px) saturate(200%);
+  background-color: rgba(17, 25, 40, 0.73);
+ 
+ 
+}
+.font-sanss {
+  font-family: var(--font-sanss);
+}
+
+.font-syne {
+  font-family: var(--font-syne);
 }
