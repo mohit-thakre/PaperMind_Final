@@ -28,7 +28,7 @@ const Hero = () => {
           user-friendly SEO tools.
         </p>
         <ShimmerButton
-          className="px-20 mt-5 mb-10 "
+          className="px-10 mt-5 mb-10 "
           background="oklch(54.1% .281 293.009)"
         >
           Get Started
