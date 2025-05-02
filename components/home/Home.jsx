@@ -4,10 +4,11 @@ import { DotPattern } from "../magicui/dot-pattern";
 import { cn } from "@/lib/utils";
 import { ShimmerButton } from "../magicui/shimmer-button";
 import DashboardImage from "./DashboardImage";
+import Partners from "./Partners";
 
 const Hero = () => {
   return (
-    <div className="mb-4">
+    <div className="">
       <div className="relative flex min-h-[500px] w-full flex-col items-center justify-start pt-20 overflow-hidden">
         <DotPattern
           glow={true}
@@ -15,7 +16,7 @@ const Hero = () => {
             "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
           )}
         />
-        <Chip_ins />
+        <Chip_ins defination="Latest Update just arrived" />
         <h1 className="text-4xl md:text-7xl text-center py-1">
           Revolutionize Your <br />
           <span className="from-purple-100 via-100% to-purple-950 text-transparent bg-clip-text bg-gradient-to-b">
@@ -23,7 +24,7 @@ const Hero = () => {
           </span>{" "}
           with AI
         </h1>
-        <p className="mt-5 font-100 text-center text-sm md:text-base px-4 md:px-0">
+        <p className="mt-5 font-medium text-center text-sm md:text-base px-4 md:px-0 text-purple-100/70 ">
           Elevate your site's visibility effortlessly with AI, where smart
           technology meets <br className="hidden md:block" />
           user-friendly SEO tools.
@@ -36,6 +37,7 @@ const Hero = () => {
         </ShimmerButton>
       </div>
       <DashboardImage />
+      <Partners />
     </div>
   );
 };
