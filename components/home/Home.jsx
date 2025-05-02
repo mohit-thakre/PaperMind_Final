@@ -3,10 +3,11 @@ import Chip_ins from "./Chip_ins";
 import { DotPattern } from "../magicui/dot-pattern";
 import { cn } from "@/lib/utils";
 import { ShimmerButton } from "../magicui/shimmer-button";
+import DashboardImage from "./DashboardImage";
 
 const Hero = () => {
   return (
-    <div>
+    <div className="mb-4">
       <div className="relative flex min-h-[500px] w-full flex-col items-center justify-start pt-20 overflow-hidden">
         <DotPattern
           glow={true}
@@ -34,6 +35,7 @@ const Hero = () => {
           Get Started
         </ShimmerButton>
       </div>
+      <DashboardImage />
     </div>
   );
 };
