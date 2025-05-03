@@ -25,28 +25,30 @@ import { AvatarIcon } from "@radix-ui/react-icons";
 function BentoGridThirdDemo() {
   return (
     <>
-      <Chip_ins defination="Features" />
-      <div className="max-w-3xl mx-auto flex  flex-col">
-        <h3 className=" text-2xl lg:text-5xl font-medium text-center text-white">
-          Smart Features Powered by AI
-        </h3>
-        <p className="text-purple-100/70 mb-5 text-center mt-4 max-w-md px-8 lg:px-2 mx-auto font-medium">
-          Effortless PDF interaction with intelligent tools for enhanced
-          understanding, speed, and accessibility.
-        </p>
+      <div className="w-full pt-24">
+        <Chip_ins defination="Features" />
+        <div className="max-w-3xl mx-auto flex  flex-col">
+          <h3 className=" text-2xl lg:text-5xl font-medium text-center text-white">
+            Smart Features Powered by AI
+          </h3>
+          <p className="text-purple-100/70 mb-5 text-center mt-4 max-w-md px-8 lg:px-2 mx-auto font-medium">
+            Effortless PDF interaction with intelligent tools for enhanced
+            understanding, speed, and accessibility.
+          </p>
+        </div>
+        <BentoGrid className="max-w-4xl  py-6 mx-auto md:auto-rows-[20rem]">
+          {items.map((item, i) => (
+            <BentoGridItem
+              key={i}
+              title={item.title}
+              description={item.description}
+              header={item.header}
+              className={cn("[&>p:text-lg]", item.className)}
+              icon={item.icon}
+            />
+          ))}
+        </BentoGrid>
       </div>
-      <BentoGrid className="max-w-4xl  py-6 mx-auto md:auto-rows-[20rem]">
-        {items.map((item, i) => (
-          <BentoGridItem
-            key={i}
-            title={item.title}
-            description={item.description}
-            header={item.header}
-            className={cn("[&>p:text-lg]", item.className)}
-            icon={item.icon}
-          />
-        ))}
-      </BentoGrid>
     </>
   );
 }

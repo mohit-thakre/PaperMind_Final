@@ -6,7 +6,7 @@ import { logos } from "@/data/logo";
 
 const Partners = () => {
   return (
-    <div className="w-full py-24">
+    <div className="w-full pt-24">
       <Chip_ins defination="Trusted By" />
       <div className="max-w-3xl mx-auto flex  flex-col">
         <h3 className=" text-2xl lg:text-5xl font-medium text-center text-white">

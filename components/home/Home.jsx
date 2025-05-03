@@ -6,6 +6,7 @@ import { ShimmerButton } from "../magicui/shimmer-button";
 import DashboardImage from "./DashboardImage";
 import Partners from "./Partners";
 import Features from "./Features";
+import Plans from "./Plans";
 
 const Hero = () => {
   return (
@@ -40,6 +41,7 @@ const Hero = () => {
       <DashboardImage />
       <Partners />
       <Features />
+      <Plans />
     </div>
   );
 };
