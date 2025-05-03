@@ -7,6 +7,7 @@ import DashboardImage from "./DashboardImage";
 import Partners from "./Partners";
 import Features from "./Features";
 import Plans from "./Plans";
+import Upload from "./Upload";
 
 const Hero = () => {
   return (
@@ -42,6 +43,7 @@ const Hero = () => {
       <Partners />
       <Features />
       <Plans />
+      <Upload />
     </div>
   );
 };
