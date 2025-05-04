@@ -8,6 +8,8 @@ import Partners from "./Partners";
 import Features from "./Features";
 import Plans from "./Plans";
 import Upload from "./Upload";
+import Faqs from "./Faqs";
+import Footer from "../common/Footer";
 
 const Hero = () => {
   return (
@@ -44,6 +46,9 @@ const Hero = () => {
       <Features />
       <Plans />
       <Upload />
+      <Faqs />
+      <div className=" h-[1.5px] bg-gradient-to-r from-transparent via-purple-600 to-transparent my-24"></div>
+      <Footer />
     </div>
   );
 };
