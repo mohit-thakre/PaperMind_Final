@@ -31,7 +31,7 @@ function BentoGridThirdDemo() {
           <h3 className=" text-2xl lg:text-5xl font-medium text-center text-white">
             Smart Features Powered by AI
           </h3>
-          <p className="text-purple-100/70 mb-5 text-center mt-4 max-w-md px-8 lg:px-2 mx-auto font-medium">
+          <p className="text-purple-100/70 mb-5 text-center text-sm md:text-base mt-4 max-w-md px-8 lg:px-2 mx-auto font-medium">
             Effortless PDF interaction with intelligent tools for enhanced
             understanding, speed, and accessibility.
           </p>

@@ -22,7 +22,7 @@ const Hero = () => {
           )}
         />
         <Chip_ins defination="Latest Update just arrived" />
-        <h1 className="text-4xl md:text-7xl text-center py-1">
+        <h1 className="text-5xl md:text-7xl text-center py-1">
           Revolutionize Your <br />
           <span className="from-purple-100 via-100% to-purple-950 text-transparent bg-clip-text bg-gradient-to-b">
             Web Rankings

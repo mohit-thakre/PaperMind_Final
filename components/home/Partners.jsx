@@ -12,33 +12,26 @@ const Partners = () => {
         <h3 className=" text-2xl lg:text-5xl font-medium text-center text-white">
           Start building today
         </h3>
-        <p className="text-purple-100/70 mb-5 text-center mt-4 max-w-md px-8 lg:px-2 mx-auto font-medium">
+        <p className="text-purple-100/70 mb-5 text-center mt-4 max-w-md px-8 lg:px-2 mx-auto text-sm  md:text-base font-medium">
           Building SaaS has never been easier. Choose the right plan for you and
           start your free trial right now.
         </p>
       </div>
-      <div className="max-w-5xl overflow-x-hidden relative py-8">
-        <div className="flex  animate-marquee">
+      <div className="max-w-full overflow-hidden relative py-8">
+        <div className="flex animate-marquee whitespace-nowrap">
           {[...logos, ...logos].map((item, idx) => (
             <Image
               key={idx}
-              alt="Partner logo "
+              alt="Partner logo"
               loading="lazy"
               width="100"
               height="40"
               decoding="async"
               data-nimg="1"
-              className="w-auto h-8 mx-6 grayscale opacity-100  hover:opacity-50 transition-all"
+              className="w-auto h-6 sm:h-8 md:h-10 mx-4 sm:mx-6 grayscale hover:opacity-50 transition-all"
               style={{ color: "transparent" }}
               src={item}
             />
-
-            // <Image
-            //   key={idx}
-            //   src={item}
-            //   alt={`logo-${idx}`}
-            //   className=" mx-6 hover:opacity-50 duration-70 cursor-pointer "
-            // />
           ))}
         </div>
       </div>

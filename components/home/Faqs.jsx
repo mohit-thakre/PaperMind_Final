@@ -47,38 +47,34 @@ const Faqs = () => {
         <h3 className=" text-2xl lg:text-5xl font-medium text-center text-white">
           Smart Features Powered by AI
         </h3>
-        <p className="text-purple-100/70 mb-5 text-center mt-4 max-w-md px-8 lg:px-2 mx-auto font-medium">
+        <p className="text-purple-100/70 mb-5 text-sm md:text-base text-center mt-4 max-w-md px-8 lg:px-2 mx-auto font-medium">
           Effortless PDF interaction with intelligent tools for enhanced
           understanding, speed, and accessibility.
         </p>
       </div>
-      <div className="mx-auto">
-        <div className="full py-10 flex justify-center items-center flex-wrap gap-3">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full py-10 flex justify-center items-center flex-wrap gap-4">
           {faqs.map((item, index) => {
             const isActive = activeIndex === index;
 
             return (
               <div
                 key={index}
-                className="p-2 border cursor-pointer"
-                style={{ borderRadius: "20px" }}
+                className="p-2 border cursor-pointer rounded-[20px]"
                 onClick={() => setActiveIndex(isActive ? null : index)}
               >
-                <div
-                  className="lg:w-[700px] w-auto gap-5 rounded-sm shadow hover:shadow-2xl px-4 py-3"
-                  style={{ borderRadius: "12px" }}
-                >
+                <div className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-[700px] gap-5 rounded-xl shadow hover:shadow-2xl px-4 py-3 transition-all">
                   <div className="w-full flex justify-between items-center">
-                    <h1 className="text-lg font-semibold text-left">
+                    <h1 className="text-base sm:text-lg font-semibold text-left text-white">
                       {item.question}
                     </h1>
-                    <h1
+                    <div
                       className={`hover:rotate-180 duration-500 ${
                         isActive ? "rotate-180" : ""
                       }`}
                     >
                       <ChevronUp />
-                    </h1>
+                    </div>
                   </div>
 
                   <div
@@ -86,7 +82,7 @@ const Faqs = () => {
                       isActive ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className="text-md text-purple-200/50 font-medium text-left py-2">
+                    <p className="text-sm sm:text-md text-purple-200/50 font-medium text-left py-2">
                       {item.answer}
                     </p>
                   </div>

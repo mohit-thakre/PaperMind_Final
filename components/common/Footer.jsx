@@ -12,7 +12,7 @@ const Footer = () => {
           <h1 className="font-bold text-2xl">PaperMind</h1>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 lg:gap-14 xl:gap-16 mb-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 md:gap-8 gap-8 mx-auto lg:gap-14 xl:gap-16 mb-3">
           <div className="flex flex-col space-y-2">
             <h3 className="text-white font-semibold mb-1">About Us</h3>
             <a href="#" className="text-white/80 hover:text-purple-600 text-sm">
