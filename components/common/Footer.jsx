@@ -4,7 +4,7 @@ import { FileText } from "lucide-react";
 const Footer = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row md:justify-between mb-8 pt-24">
+      <div className="flex flex-col md:flex-row md:justify-around mb-8 pt-24">
         <div className="mb-6 md:mb-0 flex gap-2 items-start justify-center">
           <div className=" p-2 rounded-xl text-2xl bg-violet-600 w-fit shadow-2xl shadow-violet-600 border-purple-400 border-2 duration-500  ">
             <FileText size="24" className=" text-white" />
@@ -12,7 +12,7 @@ const Footer = () => {
           <h1 className="font-bold text-2xl">PaperMind</h1>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 md:gap-8 gap-8 mx-auto lg:gap-14 xl:gap-16 mb-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 md:gap-8 gap-8 mx-auto md:mx-5 lg:gap-14 xl:gap-16 mb-3">
           <div className="flex flex-col space-y-2">
             <h3 className="text-white font-semibold mb-1">About Us</h3>
             <a href="#" className="text-white/80 hover:text-purple-600 text-sm">
@@ -79,7 +79,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row pt-2 pb-8 items-center justify-center space-y-4 md:space-y-0 md:justify-between">
+      <div className="flex flex-col md:flex-row pt-2 pb-8 items-center justify-center space-y-4 md:space-y-0 md:justify-around">
         <div className="text-sm text-white">
           © 2025 <span className="font-medium">PaperMind</span>, Inc.
         </div>

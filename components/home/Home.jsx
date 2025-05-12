@@ -47,8 +47,7 @@ const Hero = () => {
       <Plans />
       <Upload />
       <Faqs />
-      <div className=" h-[1.5px] bg-gradient-to-r from-transparent via-purple-600 to-transparent my-24"></div>
-      <Footer />
+      <div className=" h-[1.5px] bg-gradient-to-r from-transparent via-purple-600 to-transparent my-12"></div>
     </div>
   );
 };

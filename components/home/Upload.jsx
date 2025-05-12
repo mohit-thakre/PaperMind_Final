@@ -5,10 +5,11 @@ import Chip_ins from "./Chip_ins";
 
 const Upload = () => {
   const [files, setFiles] = useState([]);
-  const handleFileUpload = (files) => {
-    setFiles(files);
-    console.log(files);
+  const handleFileUpload = (filess) => {
+    setFiles(filess);
+    console.log(filess);
   };
+  console.log(files);
   return (
     <div className="w-full pt-24">
       <Chip_ins defination="Upload" />
