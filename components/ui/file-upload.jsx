@@ -22,7 +22,6 @@ export const FileUpload = ({ onChange }) => {
   const handleFileChange = (newFiles) => {
     setFiles(newFiles);
     onChange?.(newFiles);
-    console.log(newFiles);
   };
 
   const handleClick = () => fileInputRef.current?.click();

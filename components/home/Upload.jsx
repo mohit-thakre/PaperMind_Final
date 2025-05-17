@@ -5,11 +5,35 @@ import Chip_ins from "./Chip_ins";
 
 const Upload = () => {
   const [files, setFiles] = useState([]);
-  const handleFileUpload = (filess) => {
-    setFiles(filess);
-    console.log(filess);
+  const handleFileUpload = (filesArray) => {
+    const file = filesArray[0]; // ✅ Get the first file from the array
+
+    if (!file || file.type !== "application/pdf")
+      return alert("Please upload a PDF");
+
+    const reader = new FileReader();
+
+    reader.onloadend = async () => {
+      const base64 = reader.result.split(",")[1];
+
+      const res = await fetch("/api/upload-pdf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ base64Pdf: base64 }),
+      });
+
+      const data = await res.json();
+      console.log(data);
+      if (res.ok) {
+        setFiles(data.url); // Assuming data.url is a string
+      } else {
+        alert("Upload failed");
+      }
+    };
+
+    reader.readAsDataURL(file);
   };
-  console.log(files);
+
   return (
     <div className="w-full pt-24">
       <Chip_ins defination="Upload" />
@@ -30,6 +54,7 @@ const Upload = () => {
           </div>
         </div>
       </div>
+      {files && <p>{files}</p>}
     </div>
   );
 };
