@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { FileUpload } from "@/components/ui/file-upload";
 import Chip_ins from "./Chip_ins";
 import parsePDF from "@/actions/parse";
+import { summaryGemini } from "@/actions/summary";
 
 const Upload = () => {
   const [files, setFiles] = useState([]);
   const handleFileUpload = (filesArray) => {
-    const file = filesArray[0]; // ✅ Get the first file from the array
+    const file = filesArray[0];
 
     if (!file || file.type !== "application/pdf")
       return alert("Please upload a PDF");
@@ -29,7 +30,12 @@ const Upload = () => {
       if (res.ok) {
         setFiles(data.url);
         const parser = await parsePDF(data.url);
-        console.log(parser, "parser _____-----");
+        const summary = await summaryGemini(parser?.substring(0, 1000));
+
+        console.log(parser, "parser y_____-----");
+
+        console.log("++++++++<>");
+        console.log(summary, "++++++++ summary_____-----");
       } else {
         alert("Upload failed");
       }
