@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { FileUpload } from "@/components/ui/file-upload";
 import Chip_ins from "./Chip_ins";
+import parsePDF from "@/actions/parse";
 
 const Upload = () => {
   const [files, setFiles] = useState([]);
@@ -24,8 +25,11 @@ const Upload = () => {
 
       const data = await res.json();
       console.log(data);
+
       if (res.ok) {
-        setFiles(data.url); // Assuming data.url is a string
+        setFiles(data.url);
+        const parser = await parsePDF(data.url);
+        console.log(parser, "parser _____-----");
       } else {
         alert("Upload failed");
       }
