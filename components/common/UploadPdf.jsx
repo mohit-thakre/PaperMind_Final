@@ -13,7 +13,7 @@ export default function UploadPdf() {
     const reader = new FileReader();
 
     reader.onloadend = async () => {
-      const base64 = reader.result.split(",")[1]; // Strip metadata
+      const base64 = reader.result.split(",")[1];
 
       const res = await fetch("/api/upload-pdf", {
         method: "POST",

@@ -3,17 +3,11 @@ import "./globals.css";
 import "./globals1.css";
 import NavigationBar from "@/components/common/NavigationBar";
 import Footer from "@/components/common/Footer";
+import UserSyncWrapper from "@/components/common/UserSyncWrapper";
 
 import { Metadata } from "next";
 
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const fontsans = Fontsans({
   variable: "--font-sanss",
@@ -42,8 +36,13 @@ export default function RootLayout({ children }) {
           <div className="bg relative flex min-h-screen flex-col text-white">
             <NavigationBar />
 
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <UserSyncWrapper>
+                {children}
+              </UserSyncWrapper>
+            </main>
             <Footer />
+           
           </div>
         </body>
       </html>

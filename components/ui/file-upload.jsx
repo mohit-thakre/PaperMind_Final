@@ -1,9 +1,9 @@
-// FileUploadSection.jsx
 import { cn } from "@/lib/utils";
 import React, { useRef, useState } from "react";
 import { motion } from "motion/react";
 import { IconUpload } from "@tabler/icons-react";
 import { useDropzone } from "react-dropzone";
+import { LoaderFive } from "./Loader";
 
 const mainVariant = {
   initial: { x: 0, y: 0 },
@@ -15,7 +15,7 @@ const secondaryVariant = {
   animate: { opacity: 1 },
 };
 
-export const FileUpload = ({ onChange }) => {
+export const FileUpload = ({ onChange, loading }) => {
   const [files, setFiles] = useState([]);
   const fileInputRef = useRef(null);
 
@@ -59,6 +59,7 @@ export const FileUpload = ({ onChange }) => {
           </p>
 
           <div className="relative w-full mt-10 max-w-xl mx-auto">
+            {loading ? <LoaderFive text="Processing File" /> : ""}
             {files.length > 0 &&
               files.map((file, idx) => (
                 <motion.div

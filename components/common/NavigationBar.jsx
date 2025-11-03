@@ -4,10 +4,16 @@ import { FileText, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+import { useUserSync } from "@/hooks/useUserSync";
 
 const NavigationBar = () => {
   const pathName = usePathname();
   const [menu, setMenu] = useState(false);
+  const { user, dbUser, isSynced, isLoaded } = useUserSync();
+
+  if (!isLoaded || !isSynced) return;
+  if (!user) return;
+  const userId = user.id;
 
   const Navdata = [
     { name: "Features", link: "/features" },
@@ -18,14 +24,14 @@ const NavigationBar = () => {
   return (
     <>
       <div className="flex justify-center mx-auto w-full space-x-28 items-center py-6">
-        {/* Logo */}
         <div>
           <div className="p-2 rounded-xl bg-violet-600 w-fit border-purple-400 border-2 hover:border-purple-700">
-            <FileText size={24} className="text-white" />
+            <Link href="/">
+              <FileText size={24} className="text-white" />
+            </Link>
           </div>
         </div>
 
-        {/* Navigation Links */}
         <div>
           <div className="card px-2 py-3 rounded-xl md:block hidden w-fit border-purple-300 border-1 backdrop-blur-3xl font-syne">
             {Navdata.map((nav) => (
@@ -49,10 +55,21 @@ const NavigationBar = () => {
                 upload pdf
               </Link>
             </SignedIn>
+            <SignedIn>
+              <Link
+                href={`/summaries/${user.id}`}
+                className={`px-3 ${
+                  pathName === "/summaries/${user.id}"
+                    ? "text-white"
+                    : "text-white/70"
+                } hover:text-white`}
+              >
+                My Summaries
+              </Link>
+            </SignedIn>
           </div>
         </div>
 
-        {/* Auth Buttons */}
         <div className="md:flex hidden items-center justify-center ">
           <SignedIn>
             <UserButton />
@@ -70,18 +87,14 @@ const NavigationBar = () => {
           </SignedOut>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        {/*
         <div
           className="md:hidden block duration-300 cursor-pointer"
           onClick={() => setMenu(!menu)}
         >
           {menu ? <X size={35} /> : <Menu size={35} />}
         </div>
-        */}
       </div>
 
-      {/* Mobile Menu Items */}
       {menu && (
         <div className="w-full bg-transparent flex flex-col items-end justify-end backdrop-blur-3xl transition-all duration-500 ease-in-out opacity-100 scale-100">
           {Navdata.map((nav) => (

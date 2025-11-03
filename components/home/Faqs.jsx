@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import Chip_ins from "./Chip_ins";
 import { ArrowUp, ChevronUp } from "lucide-react";
+import GenerateSummary from "./GenerateSummary";
 
 const Faqs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -92,6 +93,7 @@ const Faqs = () => {
           })}
         </div>
       </div>
+      {/* <GenerateSummary /> */}
     </div>
   );
 };

@@ -1,14 +1,13 @@
 import { ins, prompt } from "@/lib/prompt";
 import { GoogleGenAI } from "@google/genai";
-
 const ai = new GoogleGenAI({
   apiKey: "",
 });
 
-export async function summaryGemini(text) {
+export async function summaryGemini(text,depthToggle,format) {
   const response = await ai.models.generateContent({
     model: "gemini-2.0-flash",
-    contents: `${prompt} ${text}`,
+    contents: `${prompt} ${text} ${depthToggle} ${format} `,
     config: {
       systemInstruction: ins,
       maxOutputTokens: 1500,

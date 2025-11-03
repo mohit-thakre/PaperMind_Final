@@ -183,11 +183,6 @@ const SkeletonThree = () => {
         repeatType: "reverse",
       }}
       className="flex flex-1 bg-transaparent [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col justify-center items-center space-y-4 p-4"
-      // style={{
-      //   background:
-      //     "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
-      //   backgroundSize: "400% 400%",
-      // }}
     >
       <div className="flex flex-wrap gap-2 justify-center">
         {fileFormats.map((format, index) => (
