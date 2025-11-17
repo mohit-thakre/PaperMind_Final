@@ -2,7 +2,7 @@
 import Chip_ins from "@/components/home/Chip_ins";
 import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -76,7 +76,7 @@ const page = () => {
                   type="email"
                   name="email"
                   id="email"
-                  value={formData.value}
+                  value={formData.email}
                   onChange={handleChange}
                   className="p-3 border-1 rounded-sm w-full my-1"
                 ></input>
@@ -107,4 +107,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

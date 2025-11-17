@@ -3,8 +3,11 @@ import React, { useEffect, useState } from "react";
 import Chip_ins from "./Chip_ins";
 import jsPDF from "jspdf";
 import Link from "next/link";
-import { useUser } from "@clerk/nextjs";
+import { useAuth, useUser } from "@clerk/nextjs";
 import { useUserSync } from "@/hooks/useUserSync";
+
+import { toast, Toaster } from "sonner";
+import { redirect } from "next/navigation";
 
 const Dashboard = () => {
   const [pdfs, setPdfs] = useState([]);
@@ -66,9 +69,6 @@ const Dashboard = () => {
     }
   };
 
-  if (!user) {
-    return <div>Loading...</div>;
-  }
   useEffect(() => {
     const fetchPdfs = async () => {
       try {
@@ -92,6 +92,7 @@ const Dashboard = () => {
 
   return (
     <div className=" w-full pt-24">
+      <Toaster />
       <Chip_ins defination="My Summaries" />
       <div className=" max-w-3xl mx-auto flex flex-col">
         <h3 className=" text-2xl lg:text-5xl font-medium text-center text-white">

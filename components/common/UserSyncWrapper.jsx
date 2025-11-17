@@ -1,17 +1,10 @@
 "use client";
 import { useUserSync } from "@/hooks/useUserSync";
+import { useAuth } from "@clerk/nextjs";
 import { useEffect } from "react";
 
 const UserSyncWrapper = ({ children }) => {
-  const { user, dbUser, isLoaded, isSynced, isLoading } = useUserSync();
-
-  if (!isLoaded || isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-white">Loading...</div>
-      </div>
-    );
-  }
+  const { user, dbUser, isSynced, isLoading } = useUserSync();
 
   if (!user) {
     return <>{children}</>;

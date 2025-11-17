@@ -2,24 +2,30 @@
 import React, { useState } from "react";
 import { FileUpload } from "@/components/ui/file-upload";
 import Chip_ins from "./Chip_ins";
-import parsePDF from "@/actions/parse";
-import { summaryGemini } from "@/actions/summary";
 import { useAuth } from "@clerk/nextjs";
 import { ShimmerButton } from "../magicui/shimmer-button";
 import Link from "next/link";
 import { useUserSync } from "@/hooks/useUserSync";
+import { SignedIn } from "@clerk/nextjs";
+import { toast, Toaster } from "sonner";
 
 const Upload = () => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user, dbUser, isLoaded, isSynced } = useUserSync();
-
-  if (!isLoaded || !isSynced) return;
-  if (!user) return;
-
-  const userId = user.id;
+  const { userId } = useAuth();
 
   const handleFileUpload = (filesArray) => {
+    if (!userId) {
+      toast("Sign in required", {
+        action: {
+          label: "Login",
+          onClick: () => router.push("/sign-in"),
+        },
+      });
+      return;
+    }
+
     const file = filesArray[0];
 
     if (!file || file.type !== "application/pdf")
@@ -59,7 +65,7 @@ const Upload = () => {
   };
 
   return (
-    <div className="w-full pt-24">
+    <div className="w-full pt-24 px-4">
       <Chip_ins defination="Upload" />
 
       <div className="max-w-3xl mx-auto flex  flex-col">
@@ -72,7 +78,7 @@ const Upload = () => {
         </p>
       </div>
 
-      <div className="p-[1px] w-[90%] md:w-full max-w-full md:max-w-4xl mx-auto rounded-[28px] bg-gradient-to-r from-[#ffaa40] via-[#7702f5] to-[#ffaa40]">
+      <div className="p-[1px] w-full sm:w-[90%] md:w-full max-w-full md:max-w-4xl mx-auto rounded-[28px] bg-gradient-to-r from-[#ffaa40] via-[#7702f5] to-[#ffaa40]">
         <div className="bg rounded-[27px] p-3 sm:p-4 md:p-6 overflow-hidden">
           <div className="w-full min-h-80 bg-transparent m-auto dark:border-neutral-800 rounded-lg backdrop-blur-sm">
             <FileUpload onChange={handleFileUpload} loading={loading} />
@@ -80,16 +86,18 @@ const Upload = () => {
         </div>
       </div>
       <div className=" mx-auto flex justify-center">
-        {files && files.url && (
-          <Link href={`/generate-summary/${userId}?pdfId=${files.pdfId}`}>
-            <ShimmerButton
-              className="px-10 mt-5 mb-10 "
-              background="oklch(54.1% .281 293.009)"
-            >
-              Generate Summary
-            </ShimmerButton>
-          </Link>
-        )}
+        <SignedIn>
+          {files && files.url && (
+            <Link href={`/generate-summary/${userId}?pdfId=${files.pdfId}`}>
+              <ShimmerButton
+                className="px-10 mt-5 mb-10 "
+                background="oklch(54.1% .281 293.009)"
+              >
+                Generate Summary
+              </ShimmerButton>
+            </Link>
+          )}
+        </SignedIn>
       </div>
     </div>
   );

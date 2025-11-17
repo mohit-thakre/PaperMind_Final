@@ -1,10 +1,9 @@
 "use client";
-import { redirect } from "next/navigation";
-
-import { toast } from "sonner";
-import GenerateSummary from "@/components/home/GenerateSummary";
+import Dashboard from "@/components/home/Dashboard";
 import { useAuth } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 import React from "react";
+import { toast } from "sonner";
 
 const Page = () => {
   const { userId } = useAuth();
@@ -19,7 +18,7 @@ const Page = () => {
   }
   return (
     <div>
-      <GenerateSummary />
+      <Dashboard />
     </div>
   );
 };

@@ -8,6 +8,7 @@ import UserSyncWrapper from "@/components/common/UserSyncWrapper";
 import { Metadata } from "next";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 const fontsans = Fontsans({
   variable: "--font-sanss",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         <body
           className={`${fontsans.variable} ${fontSyne.variable} font-sanss font-syne antialiased`}
         >
+          <Toaster />
           <div className="bg relative flex min-h-screen flex-col text-white">
             <NavigationBar />
 

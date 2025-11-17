@@ -30,11 +30,6 @@ const UserPDFs = () => {
     fetchUserPDFs();
   }, [isSynced, user]);
 
-  if (!isLoaded || !isSynced) return <div>Loading...</div>;
-  if (!user) return <div>Please sign in to view your PDFs.</div>;
-
-  if (loading) return <div>Loading your PDFs...</div>;
-
   return (
     <div className="w-full pt-24">
       <div className="max-w-4xl mx-auto">
@@ -107,4 +102,3 @@ const UserPDFs = () => {
 };
 
 export default UserPDFs;
-

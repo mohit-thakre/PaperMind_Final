@@ -10,10 +10,8 @@ const NavigationBar = () => {
   const pathName = usePathname();
   const [menu, setMenu] = useState(false);
   const { user, dbUser, isSynced, isLoaded } = useUserSync();
-
-  if (!isLoaded || !isSynced) return;
-  if (!user) return;
-  const userId = user.id;
+  const userId = user?.id;
+  const summariesPath = userId ? `/summaries/${userId}` : null;
 
   const Navdata = [
     { name: "Features", link: "/features" },
@@ -23,7 +21,7 @@ const NavigationBar = () => {
 
   return (
     <>
-      <div className="flex justify-center mx-auto w-full space-x-28 items-center py-6">
+      <div className="flex justify-between md:justify-center mx-auto w-full space-x-4 md:space-x-28 items-center py-6 px-4">
         <div>
           <div className="p-2 rounded-xl bg-violet-600 w-fit border-purple-400 border-2 hover:border-purple-700">
             <Link href="/">
@@ -45,34 +43,54 @@ const NavigationBar = () => {
                 {nav.name}
               </Link>
             ))}
+
+            <Link
+              href="/upload-pdf"
+              className={`px-3 ${
+                pathName === "/upload-pdf" ? "text-white" : "text-white/70"
+              } hover:text-white`}
+            >
+              upload pdf
+            </Link>
+
             <SignedIn>
-              <Link
-                href="/upload-pdf"
-                className={`px-3 ${
-                  pathName === "/upload-pdf" ? "text-white" : "text-white/70"
-                } hover:text-white`}
-              >
-                upload pdf
-              </Link>
-            </SignedIn>
-            <SignedIn>
-              <Link
-                href={`/summaries/${user.id}`}
-                className={`px-3 ${
-                  pathName === "/summaries/${user.id}"
-                    ? "text-white"
-                    : "text-white/70"
-                } hover:text-white`}
-              >
-                My Summaries
-              </Link>
+              {summariesPath && (
+                <Link
+                  href={`/summaries/${userId}`}
+                  className={`px-3 ${
+                    pathName === summariesPath ? "text-white" : "text-white/70"
+                  } hover:text-white`}
+                >
+                  My Summaries
+                </Link>
+              )}
             </SignedIn>
           </div>
         </div>
 
         <div className="md:flex hidden items-center justify-center ">
           <SignedIn>
-            <UserButton />
+            <UserButton>
+              <UserButton.MenuItems>
+                <UserButton.Link
+                  label="Upload PDF"
+                  labelIcon={`h`}
+                  href="/upload-pdf"
+                />
+                {summariesPath && (
+                  <UserButton.Link
+                    label="My Summaries"
+                    labelIcon={`h`}
+                    href={summariesPath}
+                  />
+                )}
+                <UserButton.Link
+                  label="Settings"
+                  labelIcon={`h`}
+                  href="/settings"
+                />
+              </UserButton.MenuItems>
+            </UserButton>
           </SignedIn>
 
           <SignedOut>

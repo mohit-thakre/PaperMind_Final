@@ -17,7 +17,6 @@ const GenerateSummary = () => {
   const handleChange = (e) => setTitle(e.target.value);
 
   const { user } = useUser();
-  if (!user) return <p>Loading...</p>;
 
   const searchParams = useSearchParams();
   const pdfId = searchParams.get("pdfId");
@@ -95,7 +94,7 @@ const GenerateSummary = () => {
   };
 
   return (
-    <div className=" w-full pt-24">
+    <div className=" w-full pt-24 px-4">
       <Chip_ins defination="Genetate Summary" />
       <div className=" max-w-3xl mx-auto flex flex-col">
         <h3 className=" text-2xl lg:text-5xl font-medium text-center text-white">

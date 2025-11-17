@@ -2,7 +2,7 @@ import UploadPdf from "@/components/common/UploadPdf";
 import Upload from "@/components/home/Upload";
 import React from "react";
 
-const page = () => {
+const Page = () => {
   return (
     <div>
       <Upload />
@@ -10,4 +10,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
