@@ -10,6 +10,7 @@ import Plans from "./Plans";
 import Upload from "./Upload";
 import Faqs from "./Faqs";
 import Footer from "../common/Footer";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -21,25 +22,28 @@ const Hero = () => {
             "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
           )}
         />
-        <Chip_ins defination="Latest Update just arrived" />
+        <Chip_ins defination="AI PDF Summary Workspace" />
         <h1 className="text-5xl md:text-7xl text-center py-1">
-          Revolutionize Your <br />
+          Turn Any PDF into <br />
           <span className="from-purple-100 via-100% to-purple-950 text-transparent bg-clip-text bg-gradient-to-b">
-            Web Rankings
-          </span>{" "}
-          with AI
+            Ready to Use
+          </span>
+          <span> </span>
+          Insights
         </h1>
         <p className="mt-5 font-medium text-center text-sm md:text-base px-4 md:px-0 text-purple-100/70 ">
-          Elevate your site's visibility effortlessly with AI, where smart
-          technology meets <br className="hidden md:block" />
-          user-friendly SEO tools.
+          Upload research papers, lecture notes, or manuals and get concise
+          <br />
+          summaries, smart outlines, and instant answers in seconds.
         </p>
-        <ShimmerButton
-          className="px-10 mt-5 mb-10 "
-          background="oklch(54.1% .281 293.009)"
-        >
-          Get Started
-        </ShimmerButton>
+        <Link href="/upload-pdf">
+          <ShimmerButton
+            className="px-10 mt-5 mb-10 "
+            background="oklch(54.1% .281 293.009)"
+          >
+            Upload a PDF
+          </ShimmerButton>
+        </Link>
       </div>
       <DashboardImage />
       <Partners />

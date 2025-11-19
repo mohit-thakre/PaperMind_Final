@@ -7,6 +7,7 @@ import { summaryGemini } from "@/actions/summary";
 import jsPDF from "jspdf";
 import { getPdf, saveSummary } from "@/actions/getAndSavepdf";
 import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
 const GenerateSummary = () => {
   const [title, setTitle] = useState("");
   const [depthToggle, setDepthToggle] = useState("concise");
@@ -52,6 +53,8 @@ const GenerateSummary = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsGenerating(true);
+    const toastId = toast.loading("Generating Summary");
+
     setSummary(null);
     try {
       const pdf = await getPdf({ pdfId });
@@ -85,11 +88,19 @@ const GenerateSummary = () => {
 
       console.log(saveSummary_);
       setSummary(saveSummary_);
-      console.log("✅ Summary generated and saved successfully");
+      toast.dismiss(toastId);
+      toast.success(" Summary generated successfully", {
+        action: {
+          label: "Download Summary",
+          onClick: () => downloadPdf(),
+        },
+      });
     } catch (error) {
       console.error("❌ Error in handleSubmit:", error);
+      toast.error(error.message);
     } finally {
       setIsGenerating(false);
+      toast.dismiss(toastId);
     }
   };
 
@@ -173,23 +184,24 @@ const GenerateSummary = () => {
                 </div>
               </div>
 
-              <button
-                type="submit"
-                disabled={isGenerating}
-                className="p-3 my-4 cursor-pointer rounded-full w-full bg-violet-600/10 border-purple-400/30 border disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isGenerating ? "🔄 Generating Summary..." : "Generate Summary"}
-              </button>
+              {summaryNew && summaryNew.summaryText ? (
+                <button
+                  type="submit"
+                  disabled={isGenerating}
+                  className="p-3 my-4 cursor-pointer rounded-full w-full bg-violet-600/10 border-purple-400/30 border disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isGenerating ? "Generating Summary..." : "Generate Summary"}
+                </button>
+              ) : (
+                <button
+                  onClick={downloadPdf}
+                  className="flex-1 cursor-pointer p-3 w-full mx-auto my-2 bg-green-600/20 border border-green-400/30 rounded-full text-green-300 hover:bg-green-600/30 transition-colors"
+                >
+                  Download
+                </button>
+              )}
             </div>
           </form>
-          {summaryNew && summaryNew.summaryText && (
-            <button
-              onClick={downloadPdf}
-              className="flex-1 cursor-pointer p-3 w-full mx-auto my-2 bg-green-600/20 border border-green-400/30 rounded-full text-green-300 hover:bg-green-600/30 transition-colors"
-            >
-              Download
-            </button>
-          )}
         </div>
       </div>
     </div>

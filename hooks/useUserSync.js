@@ -12,7 +12,7 @@ export const useUserSync = () => {
   useEffect(() => {
     let toastId = null;
     if (!isLoaded) {
-      toastId = toast.loading("Setting up...");
+      
       console.log("loaded the clerk successfull")
       return;
     }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.19.2",
+    "@clerk/themes": "^2.4.36",
     "@google/genai": "^0.14.1",
     "@google/generative-ai": "^0.24.1",
     "@langchain/community": "^0.3.43",

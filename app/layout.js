@@ -9,6 +9,7 @@ import { Metadata } from "next";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
+import { dark, neobrutalism } from "@clerk/themes";
 
 const fontsans = Fontsans({
   variable: "--font-sanss",
@@ -29,7 +30,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    appearance={{
+      baseTheme: dark,
+      variables: {
+        colorBackground: 'rgb(0 0 24 / var(--tw-bg-opacity, 1))', 
+        colorBorder: '#ffffff',
+        colorInputBackground:'rgb(0 0 24 / var(--tw-bg-opacity, 1))', 
+        
+      
+    
+      }
+    }}
+  >
       <html lang="en">
         <body
           className={`${fontsans.variable} ${fontSyne.variable} font-sanss font-syne antialiased`}

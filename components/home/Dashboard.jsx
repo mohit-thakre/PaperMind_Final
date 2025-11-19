@@ -49,6 +49,7 @@ const Dashboard = () => {
   };
 
   const deletePDF = async (pdfId) => {
+    const toastId = toast.loading("deleting pdf");
     try {
       const response = await fetch("/api/delete-pdf", {
         method: "DELETE",
@@ -60,12 +61,16 @@ const Dashboard = () => {
 
       if (response.ok) {
         setPdfs((prevPdfs) => prevPdfs.filter((pdf) => pdf.id !== pdfId));
+        toast.success("PDF deleted successfully");
         console.log("PDF deleted successfully");
       } else {
         console.error("Failed to delete PDF");
       }
     } catch (error) {
       console.error("Error deleting PDF:", error);
+      toast.success(error.message);
+    } finally {
+      toast.dismiss(toastId);
     }
   };
 

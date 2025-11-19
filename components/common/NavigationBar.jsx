@@ -21,7 +21,7 @@ const NavigationBar = () => {
 
   return (
     <>
-      <div className="flex justify-between md:justify-center mx-auto w-full space-x-4 md:space-x-28 items-center py-6 px-4">
+      <div className="flex flex-wrap justify-center items-center gap-4 md:gap-10 mx-auto w-full py-6 px-4 text-center">
         <div>
           <div className="p-2 rounded-xl bg-violet-600 w-fit border-purple-400 border-2 hover:border-purple-700">
             <Link href="/">

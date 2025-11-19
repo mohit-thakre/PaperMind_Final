@@ -8,13 +8,14 @@ import Link from "next/link";
 import { useUserSync } from "@/hooks/useUserSync";
 import { SignedIn } from "@clerk/nextjs";
 import { toast, Toaster } from "sonner";
+import { useRouter } from "next/navigation";
 
 const Upload = () => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user, dbUser, isLoaded, isSynced } = useUserSync();
   const { userId } = useAuth();
-
+  const router = useRouter();
   const handleFileUpload = (filesArray) => {
     if (!userId) {
       toast("Sign in required", {

@@ -46,11 +46,11 @@ const Faqs = () => {
       <Chip_ins defination="FAQs" />
       <div className="max-w-3xl mx-auto flex  flex-col">
         <h3 className=" text-2xl lg:text-5xl font-medium text-center text-white">
-          Smart Features Powered by AI
+          Everything about PDF summarization
         </h3>
         <p className="text-purple-100/70 mb-5 text-sm md:text-base text-center mt-4 max-w-md px-8 lg:px-2 mx-auto font-medium">
-          Effortless PDF interaction with intelligent tools for enhanced
-          understanding, speed, and accessibility.
+          Answers to the most common questions about converting PDFs into
+          summaries, outlines, and bite-sized study notes.
         </p>
       </div>
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
