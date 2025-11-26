@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
-import { razorpay } from "@/lib/razorpay";
 import Razorpay from "razorpay";
 
 export async function POST(req) {
@@ -48,9 +47,6 @@ export async function POST(req) {
     }
 
     // Create Razorpay order
-    console.log("Debug - RAZORPAY_KEY_ID exists:", !!process.env.RAZORPAY_KEY_ID);
-    console.log("Debug - RAZORPAY_KEY_SECRET exists:", !!process.env.RAZORPAY_KEY_SECRET);
-
     const options = {
       amount: selectedPlan.amount * 100, // Convert to paise
       currency: "INR",
@@ -61,8 +57,8 @@ export async function POST(req) {
         credits: selectedPlan.credits.toString()
       }
     };
-console.log("Debug - Options:", options);
-    const order = await  new Razorpay({
+    console.log("Debug - Options:", options);
+    const order = await new Razorpay({
       key_id: process.env.RAZORPAY_KEY_ID,
       key_secret: process.env.RAZORPAY_KEY_SECRET
     }).orders.create(options);
