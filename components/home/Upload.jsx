@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useUserSync } from "@/hooks/useUserSync";
 import { SignedIn } from "@clerk/nextjs";
 import { toast, Toaster } from "sonner";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 const Upload = () => {
   const [files, setFiles] = useState([]);
@@ -22,6 +22,16 @@ const Upload = () => {
         action: {
           label: "Login",
           onClick: () => router.push("/sign-in"),
+        },
+      });
+      return;
+    }
+
+    if (dbUser?.credits <= 0) {
+      toast.info("Credit not available", {
+        action: {
+          label: "Buy credit",
+          onClick: () => router.push("/pricing"),
         },
       });
       return;
@@ -58,7 +68,7 @@ const Upload = () => {
         console.log("✅ PDF mapped to user successfully");
       } else {
         setLoading(false);
-        alert("Upload failed: " + data.error);
+        toast.error("Upload failed: " + data.error);
       }
     };
 

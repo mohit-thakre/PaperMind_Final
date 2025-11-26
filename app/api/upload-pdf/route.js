@@ -10,7 +10,15 @@ export async function POST(req) {
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+  let user = await prisma.user.findUnique({
+      where: { clerkId: userId }
+    });
 
+ if(user?.credits<=0){
+  return NextResponse.json({error:"credit not available"},{status:401})
+ }
+  
+  
     const { base64Pdf, fileName } = await req.json();
 
     const result = await cloudinary.uploader.upload(
@@ -22,22 +30,6 @@ export async function POST(req) {
       }
     );
 
-    let user = await prisma.user.findUnique({
-      where: { clerkId: userId }
-    });
-
-    if (!user) {
-      const clerkUser = await currentUser();
-      
-      user = await prisma.user.create({
-        data: {
-          clerkId: userId,
-          email: clerkUser.emailAddresses[0].emailAddress,
-          name: `${clerkUser.firstName || ""} ${clerkUser.lastName || ""}`.trim(),
-        },
-      });
-    }
-
     const pdfFile = await prisma.PDFFile.create({
       data: {
         userId: user.id,
@@ -46,14 +38,22 @@ export async function POST(req) {
       },
     });
 
+    const UpdateCredit = await prisma.user.update({
+      where:{
+        id:user.id
+      },
+      data:{credits : {decrement : 1}}
+    })
+
     return NextResponse.json({ 
       url: result.url,
       pdfId: pdfFile.id,
-      message: "PDF uploaded and mapped to user successfully"
+      message: "PDF uploaded and mapped to user successfully",
+      credits : UpdateCredit?.credits
     }, { status: 200 });
   } catch (error) {
     console.error("❌ Upload PDF error:", error);
-    return NextResponse.json(
+    return NextResponse.json( 
       { error: "Failed to upload PDF" },
       { status: 500 }
     );

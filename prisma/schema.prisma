@@ -12,9 +12,11 @@ model User {
   clerkId   String     @unique
   email     String
   name      String?
+  credits   Int        @default(0)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   pdfFiles  PDFFile[]
+  purchases Purchase[]
 }
 
 model PDFFile {
@@ -26,4 +28,19 @@ model PDFFile {
   parsedText      String?
   summaryText     String?
   uploadedAt      DateTime @default(now())
+}
+
+model Purchase {
+  id                String   @id @default(cuid())
+  user              User     @relation(fields: [userId], references: [id])
+  userId            String
+  planType          String
+  amount            Int
+  credits           Int
+  razorpayOrderId   String?  @unique
+  razorpayPaymentId String?
+  razorpaySignature String?
+  status            String   @default("pending") // pending, completed, failed
+  createdAt         DateTime @default(now())
+  completedAt       DateTime?
 }

@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+
 export const handleSummarySave = async (
   userId,
   email,
@@ -71,3 +73,16 @@ export const handleFileUpload = (filesArray) => {
 
   reader.readAsDataURL(file);
 };
+
+
+export const getUser = async(userId)=>{
+  try {
+    const data = await fetch("/api/get-user");
+    const res = await data.json();
+    console.log("user fetched for upload pdf",res)
+    
+  } catch (error) {
+    toast.error(error.message)
+    console.error(error);
+  }
+}

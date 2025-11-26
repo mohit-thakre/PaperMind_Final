@@ -107,6 +107,25 @@ const Dashboard = () => {
           View and download your previously generated PDF summaries. Each
           summary is saved automatically when you generate it.
         </p>
+        {isSynced && dbUser && (
+          <div className="text-center mb-5">
+            <p className="text-green-400 text-lg font-medium">
+              Remaining Credits:{" "}
+              <span className="text-white font-bold">
+                {dbUser.credits || 0}
+              </span>
+            </p>
+            {dbUser.credits <= 0 && (
+              <p className="text-yellow-400 text-sm mt-2">
+                You have no credits.{" "}
+                <Link href="/pricing" className="underline">
+                  Purchase a plan
+                </Link>{" "}
+                to upload PDFs.
+              </p>
+            )}
+          </div>
+        )}
         <div className="mx-auto w-full max-w-4xl">
           <div className="shadow-input bg-transparent max-w-6xl p-6 [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] row-span-1 flex flex-col md:mx-0 justify-between space-y-4 rounded-xl border border-purple-400/20 transition duration-200 dark:shadow-none">
             {loading ? (
