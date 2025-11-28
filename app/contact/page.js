@@ -102,6 +102,13 @@ const Page = () => {
             </div>
           </form>
         </div>
+        
+        <div className="mt-12 text-left space-y-2 text-white/80">
+          <h4 className="text-xl font-semibold text-white mb-4">Contact Details</h4>
+          <p><strong>Address:</strong> NA</p>
+          <p><strong>Email:</strong> papermind@gmail.com</p>
+          <p><strong>Phone:</strong> NA</p>
+        </div>
       </div>
     </div>
   );

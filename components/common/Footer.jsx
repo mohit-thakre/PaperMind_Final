@@ -46,18 +46,15 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col space-y-2">
-            <h3 className="text-white font-semibold mb-1">Resources</h3>
-            <a href="#" className="text-white/80 hover:text-purple-600 text-sm">
-              Blog
+            <h3 className="text-white font-semibold mb-1">Legal</h3>
+            <a href="/privacy-policy" className="text-white/80 hover:text-purple-600 text-sm">
+              Privacy Policy
             </a>
-            <a href="#" className="text-white/80 hover:text-purple-600 text-sm">
-              Webinars
+            <a href="/terms-conditions" className="text-white/80 hover:text-purple-600 text-sm">
+              Terms & Conditions
             </a>
-            <a href="#" className="text-white/80 hover:text-purple-600 text-sm">
-              Case Studies
-            </a>
-            <a href="#" className="text-white/80 hover:text-purple-600 text-sm">
-              Documentation
+            <a href="/refund-policy" className="text-white/80 hover:text-purple-600 text-sm">
+              Refund Policy
             </a>
           </div>
 
@@ -117,7 +114,7 @@ const Footer = () => {
             <Linkedin size={20} />
           </a>
           <a
-            href="https://github.com/Abinanthan47"
+            href="https://github.com/mohit-thakre"
             className="text-white/80 hover:text-purple-600 text-sm"
             target="_blank"
             rel="noopener noreferrer"
