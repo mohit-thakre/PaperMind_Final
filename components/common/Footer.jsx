@@ -56,6 +56,9 @@ const Footer = () => {
             <a href="/refund-policy" className="text-white/80 hover:text-purple-600 text-sm">
               Refund Policy
             </a>
+             <a href="/contact-us" className="text-white/80 hover:text-purple-600 text-sm">
+              Contact Us
+            </a>
           </div>
 
           <div className="flex flex-col space-y-2">
